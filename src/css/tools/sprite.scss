@@ -1,0 +1,42 @@
+  $cart : (205px 0px -205px 0px 200px 200px 815px 815px ('../img/'+'sprite.png') 'cart');
+  $error : (0px 410px 0px -410px 200px 200px 815px 815px ('../img/'+'sprite.png') 'error');
+  $favo : (0px 205px 0px -205px 200px 200px 815px 815px ('../img/'+'sprite.png') 'favo');
+  $home : (205px 205px -205px -205px 200px 200px 815px 815px ('../img/'+'sprite.png') 'home');
+  $link : (410px 0px -410px 0px 200px 200px 815px 815px ('../img/'+'sprite.png') 'link');
+  $qr : (410px 205px -410px -205px 200px 200px 815px 815px ('../img/'+'sprite.png') 'qr');
+  $refresh : (0px 0px 0px 0px 200px 200px 815px 815px ('../img/'+'sprite.png') 'refresh');
+  $ring : (205px 410px -205px -410px 200px 200px 815px 815px ('../img/'+'sprite.png') 'ring');
+  $safe : (410px 410px -410px -410px 200px 200px 815px 815px ('../img/'+'sprite.png') 'safe');
+  $search : (615px 0px -615px 0px 200px 200px 815px 815px ('../img/'+'sprite.png') 'search');
+  $set : (615px 205px -615px -205px 200px 200px 815px 815px ('../img/'+'sprite.png') 'set');
+  $sound : (615px 410px -615px -410px 200px 200px 815px 815px ('../img/'+'sprite.png') 'sound');
+  $time : (0px 615px 0px -615px 200px 200px 815px 815px ('../img/'+'sprite.png') 'time');
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import 'tools/sprite';
+
+$color-black: #000;
+
+h2,
+p {
+    text-align: center;
+    font-size: 18px;
+}
+
+.sprite {
+    text-align: center;
+
+    li {
+        display: inline-block;
+        background-color: $color-black;
+    }
+}
+
+.cart {
+    @include sprite($cart);
+}
+
+.favo {
+    @include sprite($favo);
+}
+
+.link {
+    @include sprite($link);
+}
+
+.home {
+    @include sprite($home);
+}
